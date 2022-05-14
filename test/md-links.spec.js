@@ -38,5 +38,23 @@ describe('mdLinks path', () => {
     spyProcess.mockRestore()
   });
 
+  it('existe directorio', () => {
+    const spyConsole = jest.spyOn(console, 'log');
+
+    const spyProcess = jest.spyOn(process, "exit").mockImplementation((number) => { 
+      throw new Error('process.exit: ' + number); 
+    });
+
+    expect(() => {
+      mdLinks('./markdown')
+    }).toThrow();
+
+    expect(spyConsole.mock.calls).toEqual([["error. no existe el directorio"]]);
+    expect(spyProcess).toHaveBeenCalledWith(1);
+
+    spyConsole.mockRestore()
+    spyProcess.mockRestore()
+  })
+
   
 });

@@ -1,20 +1,11 @@
-const { rejects } = require('assert');
-const { error } = require('console');
-const fs = require('fs')//las funciones reciben un callback
-const http = require('http')
-const https = require('https')
-const { validateFalse, validateTrue, stats} = require('./src/funciones')
+const { validateFalse, validateTrue, stats, existDir} = require('./src/funciones')
 
 module.exports = (path, options) => new Promise((resolve, reject) => {
   let pathValidator = [];
   let pwd = [];
   let newPath = ""
   
-  //console.log(path, options) inicia ejecucion mdLikns
-  if (typeof path != 'string') {
-    reject("Error. path deberia ser un string")
-  }
-  
+  //console.log(path, options) inicia ejecucion mdLikns 
   if (path === ''){
     reject('Error. path vacio')
   }
@@ -31,14 +22,13 @@ module.exports = (path, options) => new Promise((resolve, reject) => {
     newPath = "/".concat(pwd.concat(pathValidator).join("/"))
   }
 
-  //llamar funcion: existe directorio
-  existDir(newPath).then(
-    promiseValue => {
-      if (promiseValue == 0); {
-        reject('Error. No existe el directorio')
-      }
-    }
-  )
+
+  //path existe?
+  const isDir = existDir(newPath)
+
+  if (!isDir) {
+    reject("error. path no existe")
+  }
 
   if (options['stats'] == true){
     resolve(stats(path, options['validate']))
@@ -60,21 +50,3 @@ module.exports = (path, options) => new Promise((resolve, reject) => {
     )
   }
 })
-
-
-//funcion: existe directorio
-    const existDir = (path) => {
-      return new Promise (function (resolve) {
-        fs.stat(path, (err, stats) => {
-          if(err) {
-            console.log(error);
-          }
-          else {
-            console.log('stat object for: path');
-            // console.log(stats);
-          } 
-        })
-      })
-    }
-//
-

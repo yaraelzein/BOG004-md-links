@@ -5,10 +5,66 @@
   "engines": {
     "node": ">=14.x"
   },
+  "description": "Libreria para revisar archivos .md y validar links",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "test": "jest --verbose --coverage"
   },
   "devDependencies": {
     "jest": "^27.5.1"
-  }
+  },
+  "description": "## Índice",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "babel-jest": "^27.5.1",
+    "babel-plugin-jest-hoist": "^27.5.1",
+    "babel-preset-jest": "^27.5.1",
+    "fs.realpath": "^1.0.0",
+    "jest-circus": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "jest-diff": "^27.5.1",
+    "jest-docblock": "^27.5.1",
+    "jest-each": "^27.5.1",
+    "jest-environment-jsdom": "^27.5.1",
+    "jest-get-type": "^27.5.1",
+    "jest-changed-files": "^27.5.1",
+    "jest-environment-node": "^27.5.1",
+    "jest-jasmine2": "^27.5.1",
+    "jest-config": "^27.5.1",
+    "jest-message-util": "^27.5.1",
+    "jest-leak-detector": "^27.5.1",
+    "jest-matcher-utils": "^27.5.1",
+    "jest-mock": "^27.5.1",
+    "jest-haste-map": "^27.5.1",
+    "jest-runner": "^27.5.1",
+    "jest-regex-util": "^27.5.1",
+    "jest-resolve-dependencies": "^27.5.1",
+    "jest-pnp-resolver": "^1.2.2",
+    "jest-util": "^27.5.1",
+    "jest-resolve": "^27.5.1",
+    "jest-runtime": "^27.5.1",
+    "jest-worker": "^27.5.1",
+    "jest-validate": "^27.5.1",
+    "jest-snapshot": "^27.5.1",
+    "jest-serializer": "^27.5.1",
+    "jest-watcher": "^27.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaraelzein/BOG004-md-links.git"
+  },
+  "keywords": [
+    "markdown"
+  ],
+  "author": "yara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaraelzein/BOG004-md-links/issues"
+  },
+  "homepage": "https://github.com/yaraelzein/BOG004-md-links#readme"
 }

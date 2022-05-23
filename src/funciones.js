@@ -1,9 +1,12 @@
-const { reject } = require('bluebird');
 const fs = require('fs');
 const http = require('http');
 const https = require('https'); 
 const { resolve } = require('path');
 // const fetch = require('node-fetch');
+
+const existDir = (path) => {
+    return fs.existsSync(path)
+  }
 
 const validateFalse = (path) => new Promise ((resolve, reject) => {
     const dataLine = [];
@@ -29,8 +32,8 @@ const validateFalse = (path) => new Promise ((resolve, reject) => {
         resolve(dataLine.flat())
     })
 })
-//cojo path hago splitpath
-//RETORNO SPLIT PATH.LENGHT
+
+
 const stats = (path, isValid) => new Promise ((resolve, reject) => {
     
     let dataLine = [];
@@ -106,13 +109,11 @@ const validateTrue = (path) => new Promise ((resolve) => {
             })
 
         })
-        // solution = `${path} ${url} ${text} ${value[0]}`
 
         dataLine.forEach((obj) => {
 
         })
-
-
+        
         Promise.all(dataLine).then((resolvePromise) => {
             let i
             for (i = 0; i < resolvePromise.length; i++) {
@@ -164,5 +165,6 @@ const checkHttps = (url) => new Promise ((resolve) => {
 module.exports = {
     validateFalse,
     validateTrue,
-    stats
+    stats,
+    existDir
 }
